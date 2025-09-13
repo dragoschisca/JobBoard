@@ -10,6 +10,7 @@ public interface Job
     string Skills { get; set; }
     int IsSalaryMentionated { get; set; }
     int? Salary { get; set; }
+    string Category { get; set; }
     Experience Experience { get; set; }
     WorkTime WorkTime { get; set; }
     Location Location { get; set; }

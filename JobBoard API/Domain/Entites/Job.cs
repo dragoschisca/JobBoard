@@ -12,6 +12,7 @@ public class Job
     public string Skills { get; set; }
     public int IsSalaryMentionated { get; set; }
     public int? Salary { get; set; }
+    public string Category { get; set; }
     public Experience Experience { get; set; }
     public WorkTime WorkTime { get; set; }
     public Location Location { get; set; }

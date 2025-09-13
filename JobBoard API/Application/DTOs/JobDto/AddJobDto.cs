@@ -5,17 +5,18 @@ namespace JobBoard_API.Application.DTOs.JobDto;
 
 public class AddJobDto
 {
-    string Title { get; set; }
-    string Description { get; set; }
-    string Skills { get; set; }
-    int IsSalaryMentionated { get; set; }
-    int? Salary { get; set; }
-    Experience Experience { get; set; }
-    WorkTime WorkTime { get; set; }
-    Location Location { get; set; }
-    DateTime CreatedOn { get; set; }
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public string Skills { get; set; }
+    public int IsSalaryMentionated { get; set; }
+    public int? Salary { get; set; }
+    public string Category { get; set; }
+    public Experience Experience { get; set; }
+    public WorkTime WorkTime { get; set; }
+    public Location Location { get; set; }
+    public DateTime CreatedOn { get; set; }
 
-    Guid CompanyId { get; set; }
-    [ForeignKey("CompanyProfile")]
-    Company Company { get; set; }
+    public Guid CompanyId { get; set; }
+    [ForeignKey("CompanyId")]
+    public Company Company { get; set; }
 }

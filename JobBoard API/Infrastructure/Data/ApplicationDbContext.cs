@@ -13,7 +13,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<Admin> Admins { get; set; }
     public DbSet<Company> Companies { get; set; }
     public DbSet<Candidat> Candidats { get; set; }
-    
     public DbSet<Job> Jobs { get; set; }
     public DbSet<Domain.Entites.Request>  Requests { get; set; }
 }

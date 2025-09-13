@@ -8,5 +8,4 @@ public class Company : User
     public string City { get; set; }
     public string OfficeAddress { get; set; }
     public string OfficePhone { get; set; }
-    public ICollection<Job> Jobs { get; set; } = new List<Job>();
-}
+    public ICollection<Guid> JobIds { get; set; } = new List<Guid>();}

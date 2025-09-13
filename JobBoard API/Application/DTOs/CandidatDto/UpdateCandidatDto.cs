@@ -1,8 +1,6 @@
-using JobBoard_API.Application.DTOs.UserDto;
-
 namespace JobBoard_API.Application.DTOs.CandidatDto;
 
-public class AddCandidatDto : AddUserDto
+public class UpdateCandidatDto
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }

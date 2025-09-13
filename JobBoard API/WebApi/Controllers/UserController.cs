@@ -40,12 +40,11 @@ public class UserController : ControllerBase
         {
             Email = addUserDto.Email,
             Password = addUserDto.Password,
-            Role = addUserDto.Role,
+            Role = UserRole.Admin,
         };
         
         dbContext.Add(user);
         dbContext.SaveChanges();
-        
         
         return Ok(user);
     }
@@ -54,7 +53,16 @@ public class UserController : ControllerBase
     public IActionResult UpdateUser(Guid id, UpdateUserDto updateUserDto)
     {
         var user = dbContext.Users.Find(id);
+        
+        user.Email = updateUserDto.Email;
+        user.Password = updateUserDto.Password;
+        
+        dbContext.Update(user);
+        dbContext.SaveChanges();
+        
+        return Ok(user);
     }
+    
 
     [HttpDelete("{id}")]
     public IActionResult DeleteUser(Guid id)

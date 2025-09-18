@@ -1,0 +1,54 @@
+@page "/candidats"
+@using MyBlazorClient.Shared
+@inject HttpClient Http
+
+<h3>Candidats</h3>
+
+@if (!string.IsNullOrEmpty(statusMessage))
+{
+    <p>@statusMessage</p>
+}
+
+@if (candidats == null)
+{
+    <p>Loading...</p>
+}
+else if (!candidats.Any())
+{
+    <p>No candidats found.</p>
+}
+else
+{
+    <ul>
+        @foreach (var candidat in candidats)
+        {
+            <li>@candidat.FirstName @candidat.LastName - @candidat.CvPath</li>
+        }
+    </ul>
+}
+
+@code {
+    private List<CandidatDto> candidats;
+    private string statusMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            candidats = await Http.GetFromJsonAsync<List<CandidatDto>>("http://localhost:5114/api/Candidat");
+
+            if (candidats != null && candidats.Any())
+            {
+                statusMessage = "Candidats loaded successfully!";
+            }
+            else
+            {
+                statusMessage = "No candidats found.";
+            }
+        }
+        catch (Exception ex)
+        {
+            statusMessage = $"Error loading candidats: {ex.Message}";
+        }
+    }
+}

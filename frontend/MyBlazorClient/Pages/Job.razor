@@ -1,0 +1,29 @@
+@page "/jobs"
+@using MyBlazorClient.Shared
+@inject HttpClient Http
+
+    <h3>Jobs</h3>
+
+    @if (jobs == null)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var job in jobs)
+            {
+                <li>@job.Title by @job.Category</li>
+            }
+        </ul>
+    }
+
+    @code {
+    private List<JobDto> jobs;
+
+    protected override async Task OnInitializedAsync()
+    {
+        jobs = await Http.GetFromJsonAsync<List<JobDto>>("api/Job");
+    }
+    }
+    
